@@ -145,11 +145,14 @@
             </div>
         </aside>
         <main class="random-content">
-            <div class="random-user-card" ng-repeat="user in data">
+            <div class="random-user-card" ng-repeat="user in data" data-userid="{{user.id}}">
+                <div class="toggleJson" ng-click="toggleJson(user.id)" title="Toggle between JSON and Visual representation">
+                    <img src="~/images/arrows.png" />
+                </div>
                 <div class="avatar">
                     <img ng-src="{{user.picture}}" />
                 </div>
-                <div>
+                <div class="data">
                     <ul>
                         <li>
                             <b>{{user.name.firstName}} {{user.name.lastName}}</b>
@@ -167,10 +170,11 @@
                         <li>
                             <img ng-src="https://lipis.github.io/flag-icon-css/flags/4x3/{{user.nationality.toLowerCase()}}.svg" class="nationality-flag" />
                         </li>
-
                     </ul>
                 </div>
-
+                <div class="jsonData">
+                    <textarea>{{user | json}}</textarea>
+                </div>
             </div>
         </main>
     </div>

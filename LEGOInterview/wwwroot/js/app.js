@@ -41,5 +41,11 @@ angularApp.controller("randomUserController", ($scope, $http) => {
 
     }
 
+    $scope.toggleJson = (id) => {
+        $(`.random-user-card[data-userid="${id}"] .avatar`).toggle();
+        $(`.random-user-card[data-userid="${id}"] .data`).toggle();
+        $(`.random-user-card[data-userid="${id}"] .jsonData`).toggle();
+        $('.random-user-card').toggleClass('fullGrid');
+    }
 
 });
