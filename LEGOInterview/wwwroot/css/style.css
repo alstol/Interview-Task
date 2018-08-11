@@ -1,0 +1,234 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fffcfc;
+    background-image: url("https://www.transparenttextures.com/patterns/cardboard-flat.png");
+}
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+nav {
+    width: 100%;
+    height: 100px;
+    background: rgba(69, 69, 69, 1);
+    position: absolute;
+    top: -100px;
+    transition: top 0.5s ease;
+    z-index: 3;
+}
+
+nav.open {
+    top: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 5px;
+    cursor: pointer;
+}
+
+nav ul li:hover {
+    background: rgba(40, 167, 69, 0.5);
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255);
+    display:block;
+    padding: 5px;
+}
+
+nav ul li a:visited {
+    color: rgb(255, 255, 255);
+}
+
+#nav-trigger {
+    width: 50px;
+    height: 50px;
+    background: rgba(40, 167, 69, 1);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: top 0.5s ease;
+    text-align:center;
+}
+
+#nav-trigger img {
+    height:70%;
+    position:relative;
+    top:7px;
+    transition:all 0.2s ease;
+}
+
+#nav-trigger img:hover{
+    height:75%;
+    top:5px;
+}
+
+#nav-trigger.open {
+    top: 100px;
+}
+
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-auto-rows: minmax(700px, auto);
+    margin-top: 75px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    -webkit-box-shadow: 3px 3px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 11px 0px rgba(0,0,0,0.75);
+    margin-bottom: 20px;
+    background: rgb(255, 255, 255);
+}
+
+.cv-side {
+    background: rgba(128, 128, 128, 0.5);
+}
+
+.cv-side {
+    text-align:center;
+}
+.cv-side .headshot img {
+    border-radius:50%;
+    margin-left: auto;
+    margin-right:auto;
+    height:150px;
+    filter:grayscale(100%);
+    transition:filter 0.5s ease;
+}
+
+.cv-side .name {
+    font-size:2em;
+}
+
+
+.cv-side .headshot img:hover {
+    filter:grayscale(0%);
+}
+
+.cv-side .contact ul {
+    list-style:none;
+    padding: 0;
+}
+
+.cv-content {
+    padding: 5px;
+    border-left:1px solid black;
+}
+
+.cv-content section header {
+    font-size: 2em;
+}
+
+.experience {
+    margin-bottom: 50px;
+}
+
+.experience .logo {
+    float: left;
+    margin-right: 25px;
+}
+
+.experience .logo img {
+    width: 100px;
+    height: 100px;
+}
+
+.experience .title {
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.experience .timeperiod {
+    font-style: italic;
+}
+
+.experience .description {
+    clear: both;
+    white-space: pre-line;
+}
+
+.badge {
+    margin-left: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 7px !important;
+}
+
+.progress {
+    height: 30px !important;
+    margin-top: 15px;
+
+}
+
+
+#random-no-nationality {
+    color: rgb(255, 0, 0);
+    display:none;
+}
+
+.random-user-card {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    margin: 15px 20px;
+    padding: 20px;
+    background-color: #fffcfc;
+    background-image: url("https://www.transparenttextures.com/patterns/lined-paper.png");
+}
+
+.random-user-card .avatar img {
+    border-radius: 100%;
+}
+
+.random-user-card div ul {
+    list-style:none;
+    padding: 0;
+}
+
+.nationality-flag {
+    height:25px;
+}
+
+@media screen and (max-width: 992px) {
+    .split-layout {
+        grid-template-columns: 100%;
+        grid-auto-rows: minmax(0px, auto);
+    }
+
+    .cv-side {
+        padding-bottom: 20px;
+    }
+
+    .cv-content {
+        border-left:none;
+        border-top:1px solid black;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .random-user-card {
+        grid-template-columns: 100%;
+    }
+
+    .random-user-card .avatar{
+        text-align:center;
+    }
+}

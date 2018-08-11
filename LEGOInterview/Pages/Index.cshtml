@@ -1,0 +1,178 @@
+﻿@page
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#222">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>LEGO Interview Task</title>
+
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+
+    <script src="~/js/model/education.js"></script>
+    <script src="~/js/model/location.js"></script>
+    <script src="~/js/model/name.js"></script>
+    <script src="~/js/model/person.js"></script>
+    <script src="~/js/model/BarDataSet.js"></script>
+    <script src="~/js/data/experience.js"></script>
+    <script src="~/js/data/progressbars.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/js/utils.js"></script>
+</head>
+
+<body ng-app="angularApp">
+    <nav>
+        <ul>
+            <li><a href="#cv">Section 1 (CV)</a></li>
+            <li><a href="#random">Section 2 (REST API)</a></li>
+        </ul>
+    </nav>
+    <div id="nav-trigger">
+        <img src="~/images/burger.png" />
+    </div>
+    <div id="cv-page" class="split-layout container" ng-controller="cvController">
+        <aside class="cv-side">
+            <div class="container">
+                <div class="headshot">
+                    <img ng-src="{{person.picture}}" />
+                </div>
+                <div class="name">
+                    {{person.name.toString()}}
+                </div>
+                <div class="address">
+                    {{person.address.toString()}}
+                </div>
+                <div class="contact">
+                    <ul>
+                        <li><a ng-href="tel:{{person.phone}} ">{{person.phone}} </a></li>
+                        <li><a ng-href="mailto:{{person.email}} ">{{person.email}} </a></li>
+                    </ul>
+                </div>
+                <b>Relevant Skills:</b>
+                <div ng-repeat="bar in progressBars">
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="{{bar.style}}" aria-valuenow="{{bar.value}}" aria-valuemin="0" aria-valuemax="100">{{bar.name}}: {{bar.value}} / 100</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main class="cv-content">
+            <div class="container">
+                <section>
+                    <header>
+                        Introduction
+                    </header>
+                    <p>
+                        <i>Software Engineering Graduate with core competences in designing and developing applications and user interfaces using ASP.NET Framework including C#, JavaScript, JQuery, HTML5, CSS3, and Git as main technologies.</i>
+                    </p>
+                    <p>
+                        Hello there! My name is Alin, I'm a {{getAge()}} year Romanian guy currently living in Denmark. <br>
+                        I moved here back in 2014 in order to study ICT Engineering at <a href="https://en.via.dk/" target="_blank">VIA University College</a>, which of course I graduated back in February 2018. Back in High School I actually studied Social Sciences due to the fact that I wasn't best friends with the study system back home, and I had pretty much zero chances to pursue my one passion since I was a child: <strong>Computer Engineering.</strong><br>
+                        By moving in Denmark I had a chance to pretty much have a 'fresh start' and I finally got a chance to achieve my dream. I went through college without failing a single class and I did so by gaining above average grades.
+                    </p>
+                </section>
+                <section>
+                    <header>
+                        Education
+                    </header>
+                    <div class="experience" ng-repeat="item in education">
+                        <div class="logo">
+                            <img ng-src="{{item.uniLogo}}" alt="Logo">
+                        </div>
+                        <div class="title">{{ item.uniName }}</div>
+                        <div class="company">{{ item.studyField }}</div>
+                        <div class="timeperiod">{{ item.fromDate }} - {{ item.untilDate }}</div>
+                    </div>
+                </section>
+                <section>
+                    <header>
+                        Work Experience
+                    </header>
+                    <div class="experience" ng-repeat="job in experience">
+                        <div class="logo">
+                            <img ng-src="{{job.companyLogo}}" alt="Logo">
+                        </div>
+                        <div class="title">{{ job.title }}</div>
+                        <div class="company">{{ job.companyName }}</div>
+                        <div class="timeperiod">{{ job.timePeriod.from }} - {{ job.timePeriod.until }}</div>
+                        <b>Gained experience with:</b>
+                        <span class="badge badge-success" ng-repeat="key in job.keywords" ng-title="{{key}}">{{key}}</span>
+                    </div>
+                </section>
+                <section>
+                    <header>
+                        Awards
+                    </header>
+                    <b>Bachelor Project - Virtual Assistant for Airport Maintenance</b>
+                    <p>
+                        Award given for our Bachelor Project. The following basis was given: <i>”For the courage to take on a project of very high technological complexity, and for applying the complex technology with a constant eye to common sense and practical use. And, in the end, making it all work”</i>
+                    </p>
+                </section>
+            </div>
+
+        </main>
+
+
+    </div>
+    <div id="random-page" class="split-layout container" ng-controller="randomUserController" style="display:none;">
+        <aside class="random-input">
+            <div class="container">
+                <h4>Random User Generator</h4>
+                <form name="getRandomUserForm">
+                    <div class="form-group">
+                        <label for="random-amount">Amount of users</label>
+                        <input type="number" class="form-control" id="random-amount" min="1" max="100" aria-describedby="amountHelp" placeholder="Enter number" ng-model="formData.amount">
+                        <small id="emailHelp" class="form-text text-muted">Enter the amount of random users you want to see. (up to 100)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="random-nationalities">Select nationalities</label>
+                        <select multiple class="form-control" id="random-nationalities" ng-model="formData.nationalities">
+                            <option>DK</option>
+                            <option>GB</option>
+                            <option>US</option>
+                        </select>
+                        <span id="random-no-nationality">Please select a nationality.</span>
+                    </div>
+                    <button class="btn btn-success btn-lg" type="submit" ng-click="loadUsers(formData.amount, formData.nationalities)">Submit</button>
+                </form>
+            </div>
+        </aside>
+        <main class="random-content">
+            <div class="random-user-card" ng-repeat="user in data">
+                <div class="avatar">
+                    <img ng-src="{{user.picture}}" />
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <b>{{user.name.firstName}} {{user.name.lastName}}</b>
+                        </li>
+                        <li>
+                            {{user.address.street}} {{user.address.state}} {{user.address.postcode}} {{user.address.city}}
+
+                        </li>
+                        <li>
+                            <a href="mailto:{{user.email}}">{{user.email}}</a>
+                        </li>
+                        <li>
+                            <a href="tel:{{user.phone}}">{{user.phone}}</a>
+                        </li>
+                        <li>
+                            <img ng-src="https://lipis.github.io/flag-icon-css/flags/4x3/{{user.nationality.toLowerCase()}}.svg" class="nationality-flag" />
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>
