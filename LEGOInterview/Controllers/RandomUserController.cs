@@ -27,17 +27,17 @@ namespace LEGOInterview.Controllers
             };
             var location = new Model.Location
             {
-                City = "Horsens",
-                Postcode = "8700",
-                State = "MidtJylland",
-                Street = "Kamtjatka"
+                City = "City",
+                Postcode = "Postcode",
+                State = "State",
+                Street = "Street"
             };
             var user = new Person
             {
                 Id = "xshteff",
                 Name = name,
                 Email = "alinstefanolaru@gmail.com",
-                Phone = "+45 60 90 47 95",
+                Phone = "+45 12 34 56 78",
                 Address = location,
                 Picture = "https://avatars1.githubusercontent.com/u/9394141?s=460&v=4",
                 Nationality = "RO",

@@ -1,9 +1,9 @@
 ﻿var angularApp = angular.module("angularApp", []);
 
 angularApp.controller("cvController", ($scope) => {
-    $scope.location = new Location("Horsens", "8700", "Denmark", "Kamtjatka 14, 1, 194");
+    $scope.location = new Location("City", "PostCode", "Country", "Street");
     $scope.name = new Name("Alin Stefan", "Olaru");
-    $scope.person = new Person("xshteff", $scope.name, "alinstefanolaru@gmail.com", "+45 60 90 47 95", $scope.location, "https://avatars1.githubusercontent.com/u/9394141?s=460&v=4", "RO");
+    $scope.person = new Person("xshteff", $scope.name, "mail@gmail.com", "+45 12 34 56 78", $scope.location, "https://avatars1.githubusercontent.com/u/9394141?s=460&v=4", "RO");
     $scope.education = [new Education("VIA University College", "Horsens, Denmark", "Bachelor ICT Engineering", "Aug 2014", "Feb 2018", "https://alinstefanola.ru/files/images/companies/VIA.png")];
     $scope.experience = experience;
     $scope.progressBars = progressBars;
