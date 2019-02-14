@@ -1,2 +1,13 @@
 language: csharp
 solution: LEGOInterview.sln
+matrix:
+  include:
+    - dotnet: 2.1.502
+      mono: none
+      env: DOTNETCORE=2
+    - mono: latest
+addons:
+  sonarcloud:
+    organization: "alstol-github"
+script:
+  - sonar-scanner
