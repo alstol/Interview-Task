@@ -9,5 +9,6 @@ matrix:
 addons:
   sonarcloud:
     organization: "alstol-github"
+    token: ${SONAR_TOKEN}
 script:
   - sonar-scanner
