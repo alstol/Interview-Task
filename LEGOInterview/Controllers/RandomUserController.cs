@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using LEGOInterview.Extensions;
 using LEGOInterview.Model;
 using LEGOInterview.Model.RandomUser;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -65,7 +64,7 @@ namespace LEGOInterview.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
-                    UserResponseRoot userResponse = JsonConvert.DeserializeObject<UserResponseRoot>(json);
+                    var userResponse = JsonConvert.DeserializeObject<RootObject>(json);
                     foreach (var randomUser in userResponse.Results)
                     {
                         var name = new Model.Name
@@ -76,9 +75,9 @@ namespace LEGOInterview.Controllers
                         var location = new Model.Location
                         {
                             City = randomUser.Location.City.FirstToUpper(),
-                            Postcode = randomUser.Location.Postcode.ToString(),
+                            Postcode = randomUser.Location.Postcode,
                             State = randomUser.Location.State.FirstToUpper(),
-                            Street = randomUser.Location.Street.FirstToUpper()
+                            Street = randomUser.Location.Street.Name.FirstToUpper()
                         };
                         var user = new Person
                         {
@@ -94,19 +93,8 @@ namespace LEGOInterview.Controllers
                     }
                 }
             }
-            return users;
-        }
 
-    }
-    static class StringExtensions
-    {
-        public static string FirstToUpper(this string text)
-        {
-            if (string.IsNullOrWhiteSpace(text))
-            {
-                return text;
-            }
-            return char.ToUpper(text.First()) + text.Substring(1);
+            return users;
         }
     }
 }
